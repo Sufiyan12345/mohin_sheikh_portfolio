@@ -53,7 +53,7 @@ export default function Experience() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.3
+        staggerChildren: 0.2
       }
     }
   };
@@ -61,13 +61,11 @@ export default function Experience() {
   const cardVariants = {
     hidden: { 
       opacity: 0, 
-      y: 50,
-      scale: 0.9
+      y: 30
     },
     visible: {
       opacity: 1,
       y: 0,
-      scale: 1,
       transition: {
         type: "spring",
         stiffness: 100,
@@ -75,23 +73,11 @@ export default function Experience() {
       }
     },
     hover: {
-      y: -10,
-      scale: 1.02,
+      y: -5,
       transition: {
         type: "spring",
         stiffness: 400,
         damping: 10
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, x: -20 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: {
-        duration: 0.4
       }
     }
   };
@@ -108,23 +94,23 @@ export default function Experience() {
       <div className="container">
         <motion.div
           className="section-header"
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.8 }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.6 }}
         >
           <motion.h2
             className="section-title"
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.5 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
           >
             Professional Journey
           </motion.h2>
-          <motion.p style={{paddingBottom:'15px'}}
+          <motion.p
             className="section-subtitle"
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            initial={{ opacity: 0, y: 10 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
           >
             My career path and professional milestones in backend development
           </motion.p>
@@ -147,7 +133,7 @@ export default function Experience() {
                 onHoverEnd={() => setActiveExp(null)}
                 style={{ 
                   '--accent-color': exp.color,
-                  '--glow-color': `${exp.color}40`
+                  '--glow-color': `${exp.color}30`
                 }}
               >
                 {/* Timeline Line */}
@@ -185,12 +171,11 @@ export default function Experience() {
                         <motion.div
                           key={idx}
                           className="achievement-item"
-                          variants={itemVariants}
-                          initial="hidden"
-                          animate={isInView ? "visible" : "hidden"}
-                          transition={{ delay: (index * 0.1) + (idx * 0.1) }}
+                          initial={{ opacity: 0, x: -10 }}
+                          animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
+                          transition={{ duration: 0.3, delay: (index * 0.1) + (idx * 0.08) }}
                         >
-                          <div className="achievement-icon">✓</div>
+                          <div className="achievement-icon">•</div>
                           <span>{achievement}</span>
                         </motion.div>
                       ))}
@@ -198,16 +183,16 @@ export default function Experience() {
                   </div>
 
                   <div className="technologies-section">
-                    <h5 className="section-label">Technologies Used</h5>
+                    <h5 className="section-label">Technologies</h5>
                     <div className="tech-tags">
                       {exp.technologies.map((tech, techIndex) => (
                         <motion.span
                           key={tech}
                           className="tech-tag"
-                          initial={{ opacity: 0, scale: 0 }}
-                          animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0 }}
-                          transition={{ duration: 0.3, delay: (index * 0.1) + (techIndex * 0.05) }}
-                          whileHover={{ scale: 1.1 }}
+                          initial={{ opacity: 0, scale: 0.8 }}
+                          animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+                          transition={{ duration: 0.2, delay: (index * 0.1) + (techIndex * 0.04) }}
+                          whileHover={{ scale: 1.05 }}
                         >
                           {tech}
                         </motion.span>
@@ -223,9 +208,9 @@ export default function Experience() {
         {/* Career Progress */}
         <motion.div
           className="career-progress"
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.5, delay: 0.6 }}
         >
           <div className="progress-stats">
             <div className="stat">
@@ -234,10 +219,10 @@ export default function Experience() {
             </div>
             <div className="stat">
               <div className="stat-number">50+</div>
-              <div className="stat-label">Projects Delivered</div>
+              <div className="stat-label">Projects</div>
             </div>
             <div className="stat">
-              <div className="stat-number">10+</div>
+              <div className="stat-number">15+</div>
               <div className="stat-label">Technologies</div>
             </div>
           </div>
@@ -247,7 +232,7 @@ export default function Experience() {
       <style jsx>{`
         .experience-section {
           position: relative;
-          padding: 120px 0;
+          padding: 80px 0;
           background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
           overflow: hidden;
           min-height: 100vh;
@@ -269,75 +254,74 @@ export default function Experience() {
           position: absolute;
           border-radius: 50%;
           background: linear-gradient(135deg, #8B5CF6, #06B6D4);
-          opacity: 0.1;
+          opacity: 0.08;
           filter: blur(40px);
         }
 
         .shape-1 {
-          width: 200px;
-          height: 200px;
-          top: 20%;
-          right: 10%;
-          animation: float 20s infinite ease-in-out;
+          width: 150px;
+          height: 150px;
+          top: 15%;
+          right: 8%;
         }
 
         .shape-2 {
-          width: 150px;
-          height: 150px;
-          bottom: 30%;
-          left: 10%;
-          animation: float 25s infinite ease-in-out reverse;
+          width: 120px;
+          height: 120px;
+          bottom: 25%;
+          left: 8%;
         }
 
         .shape-3 {
-          width: 100px;
-          height: 100px;
-          top: 60%;
-          right: 20%;
-          animation: float 30s infinite ease-in-out;
+          width: 80px;
+          height: 80px;
+          top: 55%;
+          right: 15%;
         }
 
         .section-header {
           text-align: center;
-          margin-bottom: 4rem;
+          margin-bottom: 3rem;
         }
 
         .section-title {
-          font-size: 3.5rem;
-          font-weight: 800;
+          font-size: 2.5rem;
+          font-weight: 700;
           background: linear-gradient(135deg, #fff, #a5b4fc);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
-          margin-bottom: 1rem;
+          margin-bottom: 0.75rem;
+          letter-spacing: -0.5px;
         }
 
         .section-subtitle {
-          font-size: 1.25rem;
+          font-size: 1rem;
           color: #94a3b8;
-          max-width: 600px;
+          max-width: 500px;
           margin: 0 auto;
+          line-height: 1.5;
         }
 
         .experience-container {
           position: relative;
           z-index: 2;
-          max-width: 900px;
+          max-width: 800px;
           margin: 0 auto;
         }
 
         .experience-timeline {
           display: flex;
           flex-direction: column;
-          gap: 3rem;
+          gap: 2rem;
           position: relative;
         }
 
         .experience-card {
-          background: rgba(255, 255, 255, 0.05);
-          backdrop-filter: blur(20px);
-          border: 1px solid rgba(255, 255, 255, 0.1);
-          border-radius: 24px;
-          padding: 2.5rem;
+          background: rgba(255, 255, 255, 0.04);
+          backdrop-filter: blur(15px);
+          border: 1px solid rgba(255, 255, 255, 0.08);
+          border-radius: 16px;
+          padding: 2rem;
           position: relative;
           transition: all 0.3s ease;
           cursor: pointer;
@@ -349,9 +333,9 @@ export default function Experience() {
           top: 0;
           left: 0;
           right: 0;
-          height: 3px;
+          height: 2px;
           background: linear-gradient(90deg, var(--accent-color), transparent);
-          border-radius: 24px 24px 0 0;
+          border-radius: 16px 16px 0 0;
           transform: scaleX(0);
           transition: transform 0.3s ease;
         }
@@ -365,37 +349,38 @@ export default function Experience() {
         .experience-card.active {
           border-color: var(--accent-color);
           box-shadow: 
-            0 20px 40px rgba(0, 0, 0, 0.3),
-            0 0 80px var(--glow-color);
+            0 10px 30px rgba(0, 0, 0, 0.2),
+            0 0 40px var(--glow-color);
+          background: rgba(255, 255, 255, 0.06);
         }
 
         .timeline-line {
           position: absolute;
-          bottom: -3rem;
+          bottom: -2rem;
           left: 50%;
           transform: translateX(-50%);
-          width: 2px;
-          height: 3rem;
+          width: 1.5px;
+          height: 2rem;
           background: linear-gradient(to bottom, var(--accent-color), transparent);
         }
 
         .experience-header {
           display: flex;
           align-items: flex-start;
-          gap: 1.5rem;
-          margin-bottom: 2rem;
+          gap: 1.25rem;
+          margin-bottom: 1.5rem;
         }
 
         .company-logo {
-          width: 70px;
-          height: 70px;
-          border-radius: 18px;
+          width: 50px;
+          height: 50px;
+          border-radius: 12px;
           display: flex;
           align-items: center;
           justify-content: center;
-          font-size: 2rem;
+          font-size: 1.25rem;
           flex-shrink: 0;
-          box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
         .company-info {
@@ -406,85 +391,90 @@ export default function Experience() {
           display: flex;
           justify-content: space-between;
           align-items: flex-start;
-          margin-bottom: 0.5rem;
+          margin-bottom: 0.4rem;
           flex-wrap: wrap;
-          gap: 1rem;
+          gap: 0.75rem;
         }
 
         .company-name {
-          font-size: 1.6rem;
-          font-weight: 700;
+          font-size: 1.25rem;
+          font-weight: 600;
           color: white;
           margin: 0;
+          letter-spacing: -0.3px;
         }
 
         .experience-type {
           background: var(--accent-color);
           color: white;
-          padding: 0.4rem 1rem;
-          border-radius: 20px;
-          font-size: 0.85rem;
-          font-weight: 600;
+          padding: 0.3rem 0.8rem;
+          border-radius: 12px;
+          font-size: 0.75rem;
+          font-weight: 500;
           white-space: nowrap;
         }
 
         .position {
-          font-size: 1.3rem;
+          font-size: 1rem;
           color: var(--accent-color);
-          font-weight: 600;
-          margin-bottom: 1rem;
+          font-weight: 500;
+          margin-bottom: 0.75rem;
+          letter-spacing: -0.2px;
         }
 
         .meta-info {
           display: flex;
           flex-wrap: wrap;
-          gap: 1rem;
+          gap: 0.75rem;
           align-items: center;
         }
 
         .meta-info span {
-          background: rgba(255, 255, 255, 0.1);
-          padding: 0.5rem 1rem;
-          border-radius: 20px;
-          font-size: 0.9rem;
-          font-weight: 500;
+          background: rgba(255, 255, 255, 0.08);
+          padding: 0.4rem 0.8rem;
+          border-radius: 12px;
+          font-size: 0.8rem;
+          font-weight: 400;
           color: #cbd5e1;
         }
 
         .experience-content {
-          border-top: 1px solid rgba(255, 255, 255, 0.1);
-          padding-top: 2rem;
+          border-top: 1px solid rgba(255, 255, 255, 0.06);
+          padding-top: 1.5rem;
         }
 
         .description {
           color: #94a3b8;
-          font-size: 1.1rem;
-          line-height: 1.6;
-          margin-bottom: 2rem;
+          font-size: 0.9rem;
+          line-height: 1.5;
+          margin-bottom: 1.5rem;
         }
 
         .section-label {
           color: white;
-          font-size: 1.1rem;
+          font-size: 0.9rem;
           font-weight: 600;
-          margin-bottom: 1rem;
+          margin-bottom: 0.75rem;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
         }
 
         .achievements-section {
-          margin-bottom: 2rem;
+          margin-bottom: 1.5rem;
         }
 
         .achievements-grid {
           display: grid;
-          gap: 0.75rem;
+          gap: 0.6rem;
         }
 
         .achievement-item {
           display: flex;
           align-items: flex-start;
-          gap: 0.75rem;
+          gap: 0.6rem;
           color: #cbd5e1;
-          line-height: 1.5;
+          line-height: 1.4;
+          font-size: 0.85rem;
         }
 
         .achievement-icon {
@@ -492,27 +482,28 @@ export default function Experience() {
           font-weight: bold;
           flex-shrink: 0;
           margin-top: 0.1rem;
+          font-size: 1rem;
         }
 
         .technologies-section {
-          margin-bottom: 1rem;
+          margin-bottom: 0.5rem;
         }
 
         .tech-tags {
           display: flex;
           flex-wrap: wrap;
-          gap: 0.75rem;
+          gap: 0.5rem;
         }
 
         .tech-tag {
-          background: rgba(255, 255, 255, 0.1);
-          border: 1px solid rgba(255, 255, 255, 0.2);
+          background: rgba(255, 255, 255, 0.08);
+          border: 1px solid rgba(255, 255, 255, 0.12);
           color: #cbd5e1;
-          padding: 0.5rem 1rem;
-          border-radius: 12px;
-          font-size: 0.85rem;
-          font-weight: 500;
-          transition: all 0.3s ease;
+          padding: 0.35rem 0.75rem;
+          border-radius: 8px;
+          font-size: 0.75rem;
+          font-weight: 400;
+          transition: all 0.2s ease;
         }
 
         .tech-tag:hover {
@@ -522,59 +513,57 @@ export default function Experience() {
         }
 
         .career-progress {
-          margin-top: 4rem;
+          margin-top: 3rem;
           text-align: center;
         }
 
         .progress-stats {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
-          gap: 2rem;
-          max-width: 600px;
+          gap: 1.5rem;
+          max-width: 500px;
           margin: 0 auto;
         }
 
         .stat {
-          background: rgba(255, 255, 255, 0.05);
-          border: 1px solid rgba(255, 255, 255, 0.1);
-          border-radius: 16px;
-          padding: 2rem 1rem;
+          background: rgba(255, 255, 255, 0.04);
+          border: 1px solid rgba(255, 255, 255, 0.08);
+          border-radius: 12px;
+          padding: 1.5rem 1rem;
           backdrop-filter: blur(10px);
         }
 
         .stat-number {
-          font-size: 2.5rem;
-          font-weight: 800;
+          font-size: 1.75rem;
+          font-weight: 700;
           background: linear-gradient(135deg, #8b5cf6, #ec4899);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
-          margin-bottom: 0.5rem;
+          margin-bottom: 0.4rem;
         }
 
         .stat-label {
           color: #94a3b8;
-          font-size: 0.95rem;
-          font-weight: 500;
-        }
-
-        @keyframes float {
-          0%, 100% { transform: translateY(0px) rotate(0deg); }
-          33% { transform: translateY(-20px) rotate(120deg); }
-          66% { transform: translateY(20px) rotate(240deg); }
+          font-size: 0.85rem;
+          font-weight: 400;
         }
 
         /* Mobile Responsive */
         @media (max-width: 768px) {
           .experience-section {
-            padding: 80px 0;
+            padding: 60px 0;
           }
           
           .section-title {
-            font-size: 2.5rem;
+            font-size: 2rem;
+          }
+          
+          .section-subtitle {
+            font-size: 0.9rem;
           }
           
           .experience-card {
-            padding: 2rem;
+            padding: 1.5rem;
           }
           
           .experience-header {
@@ -594,6 +583,7 @@ export default function Experience() {
           .progress-stats {
             grid-template-columns: 1fr;
             gap: 1rem;
+            max-width: 250px;
           }
           
           .timeline-line {
@@ -603,19 +593,19 @@ export default function Experience() {
 
         @media (max-width: 480px) {
           .section-title {
-            font-size: 2rem;
+            font-size: 1.75rem;
           }
           
           .experience-card {
-            padding: 1.5rem;
+            padding: 1.25rem;
           }
           
           .company-name {
-            font-size: 1.3rem;
+            font-size: 1.1rem;
           }
           
           .position {
-            font-size: 1.1rem;
+            font-size: 0.9rem;
           }
           
           .meta-info {
@@ -623,16 +613,24 @@ export default function Experience() {
           }
           
           .meta-info span {
-            font-size: 0.8rem;
-            padding: 0.4rem 0.8rem;
+            font-size: 0.75rem;
+            padding: 0.3rem 0.6rem;
+          }
+          
+          .description {
+            font-size: 0.85rem;
           }
           
           .tech-tags {
-            gap: 0.5rem;
+            gap: 0.4rem;
           }
           
           .tech-tag {
-            padding: 0.4rem 0.8rem;
+            padding: 0.3rem 0.6rem;
+            font-size: 0.7rem;
+          }
+          
+          .achievement-item {
             font-size: 0.8rem;
           }
         }
